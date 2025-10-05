@@ -2,21 +2,18 @@
 #include <stdio.h>
 
 /**
- * print_list - Prints a list of integers
- *
- * @list: The list to be printed
+ * print_list - Prints a list
+ * @list: List to print
  */
 void print_list(const listint_t *list)
 {
-	int i;
+	int count = 0;
 
-	i = 0;
 	while (list)
 	{
-		if (i > 0)
+		if (count++)
 			printf(", ");
 		printf("%d", list->n);
-		++i;
 		list = list->next;
 	}
 	printf("\n");
