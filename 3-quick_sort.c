@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * swap - Swaps two integers in an array
+ * swap - Swaps two integers in an array and prints the array
  * @array: The array
  * @i: First index
  * @j: Second index
@@ -11,13 +11,10 @@ void swap(int *array, size_t i, size_t j, size_t size)
 {
 	int temp;
 
-	if (i != j)
-	{
-		temp = array[i];
-		array[i] = array[j];
-		array[j] = temp;
-		print_array(array, size);
-	}
+	temp = array[i];
+	array[i] = array[j];
+	array[j] = temp;
+	print_array(array, size);
 }
 
 /**
@@ -39,11 +36,17 @@ size_t lomuto_partition(int *array, size_t low, size_t high, size_t size)
 	{
 		if (array[j] < pivot)
 		{
-			swap(array, i, j, size);
+			if (i != j)
+			{
+				swap(array, i, j, size);
+			}
 			i++;
 		}
 	}
-	swap(array, i, high, size);
+	if (i != high && array[i] != array[high])
+	{
+		swap(array, i, high, size);
+	}
 	return (i);
 }
 
